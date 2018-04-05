@@ -1,8 +1,8 @@
 <div [formGroup]="reviewsForm" class="add-cake row border rounded p-3">
-  <h4>Add your cake</h4>
-   <div *ngIf="showSuccessAlert" class="alert alert-success" role="alert">
+   <div *ngIf="showSuccessAlert" class="alert alert-success col-md-12" role="alert">
         This is a success alert—check it out!
    </div>
+   <h4 class="col-md-12">Add your cake</h4>
   <div class="col-md-12 my-2">
     <b>Cake Name</b>
     <input placeholder="Enter cake name here" class="cake-details__comment col-md-12" formControlName="name" />

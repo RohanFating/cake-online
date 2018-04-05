@@ -1,0 +1,8 @@
+.app {
+    &__heading {
+        padding: 10px;
+        background: $color-red-150;
+        color: $color-white;   
+        font-size: $font-size-xl;     
+    }
+}

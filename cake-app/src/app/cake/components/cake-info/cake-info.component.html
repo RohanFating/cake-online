@@ -1,3 +1,12 @@
-<p>
-  cake-info works!
-</p>
+<div class="cake-info row">
+  <div *ngFor="let cake of cakeList; let i = index;" class="col-md-3 no-gutters text-center p-0">
+    <div class="card m-2">
+      <img [src]="cake.imageUrl" class="card-img-top cake-info__wrapper__grid" (click)="openakeDetails(cake)"/>
+      <h5 class="card-title m-1">{{cake.name}}</h5>
+    </div>
+  </div>
+ 
+  <div *ngIf="cakeList.length === 0 && errorMessage.length > 0" class="alert alert-danger">
+      <strong>Error!</strong>  {{errorMessage}}
+  </div>
+</div>

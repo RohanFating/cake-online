@@ -1,4 +1,8 @@
 <div [formGroup]="reviewsForm" class="add-cake row border rounded p-3">
+  <h4>Add your cake</h4>
+   <div *ngIf="showSuccessAlert" class="alert alert-success" role="alert">
+        This is a success alert—check it out!
+   </div>
   <div class="col-md-12 my-2">
     <b>Cake Name</b>
     <input placeholder="Enter cake name here" class="cake-details__comment col-md-12" formControlName="name" />
@@ -17,7 +21,7 @@
       </div>
     </div>
   <div class="col-md-12 my-2">
-    <b>Comments</b>
+    <b>Comment</b>
     <input placeholder="Enter your comment here" class="cake-details__comment col-md-12" formControlName="comment" />
     <div class="text-danger" *ngIf="reviewsForm.invalid && reviewsForm.get('comment').touched && reviewsForm.get('comment').hasError('required')">
       Please enter comment
@@ -41,7 +45,7 @@
 
   <div class="col-12 my-3 cake-details__btn">
     <button class="btn btn-primary" (click)="resetModels()">Reset</button>
-    <button class="btn btn-primary" (click)="submitReviews()">Submit</button>
+    <button class="btn btn-primary" (click)="addCake()">Submit</button>
     <button class="btn btn-primary" (click)="goBack()">Go Back</button>
   </div>
 </div>

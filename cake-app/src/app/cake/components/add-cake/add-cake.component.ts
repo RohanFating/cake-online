@@ -1,10 +1,12 @@
-import { Component, OnInit, Input, EventEmitter, Output, OnDestroy } from '@angular/core';
-import { CakeInfo } from '../../interfaces/cake.interface';
-import { CakeService } from '../../services/cake.service';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppConstant } from '../../constants/constants';
+import { CakeInfo } from '../../interfaces/cake.interface';
+import { CakeService } from '../../services/cake.service';
 
+const YUM_FACTORS: Array<number> = [1, 2, 3, 4, 5];
+const SUCCSESS_ALERT_TIME: number = 3000;
 /**
  * Component to handle reviews and ratings for cake basis on yum factor and comment
  */
@@ -12,16 +14,11 @@ import { AppConstant } from '../../constants/constants';
   selector: 'app-add-cake',
   templateUrl: './add-cake.component.html'
 })
-export class AddCakeComponent implements OnInit, OnDestroy {
+export class AddCakeComponent implements OnInit {
 
-  // Input property to get cake Info on selector
-  @Input() public cakeInfo: CakeInfo;
-
-  // Trigger event on successful reviews submission
-  @Output() public reviewsGiven: EventEmitter<CakeInfo>;
-
+  public showSuccessAlert: boolean = false;
   // To render yum factor select input
-  public yumFactors: Array<number> = [1, 2, 3, 4, 5];
+  public yumFactors: Array<number> = YUM_FACTORS;
   // To show error message if data unavailable
   public errorMessage: string;
 
@@ -39,7 +36,6 @@ export class AddCakeComponent implements OnInit, OnDestroy {
     this.router = router;
     this.fb = fb;
     this.cakeService = cakeService;
-    this.reviewsGiven = new EventEmitter<CakeInfo>();
   }
 
   /**
@@ -70,7 +66,8 @@ export class AddCakeComponent implements OnInit, OnDestroy {
   /**
    * Submit reviews on server after complete form validation
    */
-  public submitReviews(): void {
+  public addCake(): void {
+    this.showSuccessAlert = false;
     if (this.reviewsForm.valid) {
       const param: any = {
         comment: this.getFormValues('comment'),
@@ -79,10 +76,13 @@ export class AddCakeComponent implements OnInit, OnDestroy {
         name: this.getFormValues('name')
       };
       this.errorMessage = '';
-      this.cakeService.submitCake('5a95e28f3fa54b04019590ij', param).subscribe(
+      this.cakeService.submitCake( param ).subscribe(
         (data) => {
-          this.cakeInfo = data;
-          // this.reviewsGiven.emit(data);
+          this.showSuccessAlert = true;
+          this.resetModels();
+          setTimeout( () => {
+            this.showSuccessAlert = false;
+          }, SUCCSESS_ALERT_TIME );
         },
         (err) => {
           this.errorMessage = AppConstant.ERROR_MESSAGE_REVIEWS;
@@ -97,13 +97,6 @@ export class AddCakeComponent implements OnInit, OnDestroy {
    */
   public goBack( data: CakeInfo ): void {
    window.history.back();
-  }
-
-  /**
-   * Lifecycle Hook ngOnDestroy to clean up component
-   */
-  public ngOnDestroy(): void {
-    this.cakeInfo = null;
   }
 
   private getFormValues( formControl: string ): string {

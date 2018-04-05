@@ -34,16 +34,9 @@ export class CakeService {
   }
 
   /**
-   * To get cake details
-   */
-  public submitCakeReviews( id: string, cakeInfo: any ): any {
-      return this.http.put( `${AppConstant.BASE_URL}/${id}`, cakeInfo );
-  }
-
-  /**
    * To submit new cake
    */
-  public submitCake( id: string, cakeInfo: any ): any {
+  public submitCake( cakeInfo: any ): any {
     const headers = new HttpHeaders();
     headers.set('Content-Type', 'application/json; charset=utf-8');
     return this.http.post( `${AppConstant.BASE_URL}`,  cakeInfo, { headers: headers } );

@@ -5,7 +5,7 @@
    <h4 class="col-md-12">Add your cake</h4>
   <div class="col-md-12 my-2">
     <b>Cake Name</b>
-    <input placeholder="Enter cake name here" class="cake-details__comment col-md-12" formControlName="name" />
+    <input placeholder="Enter cake name here" class="add-cake__comment col-md-12" formControlName="name" />
     <div class="text-danger" *ngIf="reviewsForm.invalid && reviewsForm.get('name').touched && reviewsForm.get('name').hasError('required')">
       Please enter name for cacke
     </div>
@@ -15,14 +15,14 @@
   </div>
   <div class="col-md-12 my-2">
       <b>Cake Image</b>
-      <input placeholder="Enter cake image url" class="cake-details__comment col-md-12" formControlName="imageUrl" />
+      <input placeholder="Enter cake image url" class="add-cake__comment col-md-12" formControlName="imageUrl" />
       <div class="text-danger" *ngIf="reviewsForm.invalid && reviewsForm.get('imageUrl').touched && reviewsForm.get('imageUrl').hasError('required')">
         Please enter image url for cake
       </div>
     </div>
   <div class="col-md-12 my-2">
     <b>Comment</b>
-    <input placeholder="Enter your comment here" class="cake-details__comment col-md-12" formControlName="comment" />
+    <input placeholder="Enter your comment here" class="add-cake__comment col-md-12" formControlName="comment" />
     <div class="text-danger" *ngIf="reviewsForm.invalid && reviewsForm.get('comment').touched && reviewsForm.get('comment').hasError('required')">
       Please enter comment
     </div>
@@ -32,7 +32,7 @@
   </div>
   <div class="col-md-12 my-2">
     <b>Yum Factor</b>
-    <select placeholder="yum factor" class="cake-details__comment col-md-12" formControlName="yumFactor">
+    <select placeholder="yum factor" class="add-cake__comment col-md-12" formControlName="yumFactor">
       <option *ngFor="let item of [1, 2, 3, 4, 5]">
         {{item}}
       </option>
@@ -43,7 +43,7 @@
     {{errorMessage}}
   </div>
 
-  <div class="col-12 my-3 cake-details__btn">
+  <div class="col-12 my-3 add-cake__btn">
     <button class="btn btn-primary" (click)="resetModels()">Reset</button>
     <button class="btn btn-primary" (click)="addCake()">Submit</button>
     <button class="btn btn-primary" (click)="goBack()">Go Back</button>

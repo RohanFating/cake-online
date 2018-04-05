@@ -55,13 +55,13 @@ export class CakeDetailsComponent implements OnInit, OnDestroy {
     );
   }
 
-  /**
-   * To get data updated after submitting comment from cake reviews component
-   * @param data - CakeInfo data coming after submitting reviews
+   /**
+   * Navigate to detail page
+   * @param data - selected cake item
    */
-  public updateCakeInfo(data: CakeInfo): void {
-    this.cakeInfo = data;
-  }
+  public goBack( data: CakeInfo ): void {
+    window.history.back();
+   }
 
   /**
    * Lifecycle Hook ngOnDestroy to clean up component

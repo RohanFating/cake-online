@@ -1,7 +1,10 @@
 <div class="cake-info row">
+    <div class="col-12 my-3 cake-details__btn">
+        <button class="btn btn-primary" (click)="nextPage('add-cake')">Add you cake!</button>
+      </div>
   <div *ngFor="let cake of cakeList; let i = index;" class="col-md-3 no-gutters text-center p-0">
     <div class="card m-2">
-      <img [src]="cake.imageUrl" class="card-img-top cake-info__wrapper__grid" (click)="openakeDetails(cake)"/>
+      <img [src]="cake.imageUrl" class="card-img-top cake-info__wrapper__grid" (click)="nextPage('detail', cake)"/>
       <h5 class="card-title m-1">{{cake.name}}</h5>
     </div>
   </div>

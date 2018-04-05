@@ -14,9 +14,12 @@
               <div class="my-2">
                 <b>Comments: </b>{{cakeInfo.comment || 'No Comments Available'}}</div>
             </div>
+            <div class="col-12 my-5">
+                <button class="btn btn-primary" (click)="goBack('add-cake')">Go Back</button>
+              </div>
           </div>
         </div>
-        <app-cake-reviews [cakeInfo]="cakeInfo" (reviewsGiven)="updateCakeInfo($event)"></app-cake-reviews>
+        <!-- <app-cake-reviews [cakeInfo]="cakeInfo" (reviewsGiven)="updateCakeInfo($event)"></app-cake-reviews> -->
   </div>
 
   <div *ngIf="!cakeInfo || errorMessage" class="alert alert-danger">

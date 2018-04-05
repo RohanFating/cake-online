@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import { CakeInfo } from '../interfaces/cake.interface';
 import { AppConstant } from '../constants/constants';
@@ -38,5 +38,14 @@ export class CakeService {
    */
   public submitCakeReviews( id: string, cakeInfo: any ): any {
       return this.http.put( `${AppConstant.BASE_URL}/${id}`, cakeInfo );
+  }
+
+  /**
+   * To submit new cake
+   */
+  public submitCake( id: string, cakeInfo: any ): any {
+    const headers = new HttpHeaders();
+    headers.set('Content-Type', 'application/json; charset=utf-8');
+    return this.http.post( `${AppConstant.BASE_URL}`,  cakeInfo, { headers: headers } );
   }
 }

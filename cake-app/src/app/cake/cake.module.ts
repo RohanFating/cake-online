@@ -5,7 +5,7 @@ import { CakeDetailsComponent } from './components/cake-details/cake-details.com
 import { CakeService } from './services/cake.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CakeReviewsComponent } from './components/cake-reviews/cake-reviews.component';
+import { AddCakeComponent } from './components/add-cake/add-cake.component';
 
 @NgModule({
   imports: [
@@ -15,7 +15,6 @@ import { CakeReviewsComponent } from './components/cake-reviews/cake-reviews.com
     HttpClientModule
   ],
   providers: [ CakeService ],
-  declarations: [ CakeInfoComponent, CakeDetailsComponent, CakeReviewsComponent ],
-  exports: [ CakeReviewsComponent ],
+  declarations: [ CakeInfoComponent, CakeDetailsComponent, AddCakeComponent ],
 })
 export class CakeModule { }

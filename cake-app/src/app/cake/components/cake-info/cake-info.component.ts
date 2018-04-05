@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { CakeService } from '../../services/cake.service';
 import { CakeInfo } from '../../interfaces/cake.interface';
 import { AppConstant } from '../../constants/constants';
+
+const CAKE_DETAILS: string = 'detail';
+const ADD_CAKE: string = 'add-cake';
 /**
  * Cake Infor component to show grid of cakes
  */
@@ -55,8 +58,13 @@ export class CakeInfoComponent implements OnInit, OnDestroy {
    * Navigate to detail page
    * @param data - selected cake item
    */
-  public openakeDetails( data: CakeInfo ): void {
-    this.router.navigate(['/cake-details/', data.id]);
+  public nextPage( pageName: string, data?: CakeInfo ): void {
+
+    if ( pageName === CAKE_DETAILS ) {
+      this.router.navigate(['/cake-details/', data.id]);
+    } else if ( pageName === ADD_CAKE ) {
+      this.router.navigate(['/add-cake']);
+    }
   }
 
 }

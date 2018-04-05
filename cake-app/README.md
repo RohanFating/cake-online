@@ -7,7 +7,7 @@ This project was generated with [Angular CLI] version 1.6.1.
 
 ## Setup and Installation
 1. git clone https://github.com/RohanFating/cake-online.git
-2. Go to folder cake-app
+2. Go to folder cake-online/cake-app
 3. Open terminal and run command - npm install
 4. To launch application run command - npm start / ng serve
 5. open "http://localhost:4200/" in browser

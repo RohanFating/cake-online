@@ -1,0 +1,27 @@
+.cake-details {
+    margin-top: 100px;
+    &__wrapper {
+        &__grid {
+        cursor: pointer;
+            height: 350px;
+        }
+    }
+    &__comment {
+        width: 100%;
+        height: 50px;
+    }
+    &__btn {
+        float: right;
+        position: relative;
+    }
+}
+
+@media ( max-width: $mobile-screen ) {
+    .cake-details {
+        &__wrapper {
+            &__grid {
+              height: 150px;
+            }
+        }
+    }
+}

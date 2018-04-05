@@ -1,3 +1,25 @@
-<p>
-  cake-details works!
-</p>
+<div class="cake-details">
+  <div *ngIf="cakeInfo">
+      <div class="row">
+          <div class="col-6">
+            <img [src]="cakeInfo.imageUrl" class="card-img-top border rounded cake-details__wrapper__grid" />
+          </div>
+          <div class="col-6 ng-gutters">
+            <div class="col-12">
+              <h4>{{cakeInfo.name}}</h4>
+            </div>
+            <div class="col-12">
+              <div class="my-2">
+                <b>Yum Factor: </b>{{cakeInfo.yumFactor}}</div>
+              <div class="my-2">
+                <b>Comments: </b>{{cakeInfo.comment || 'No Comments Available'}}</div>
+            </div>
+          </div>
+        </div>
+        <app-cake-reviews [cakeInfo]="cakeInfo" (reviewsGiven)="updateCakeInfo($event)"></app-cake-reviews>
+  </div>
+
+  <div *ngIf="!cakeInfo || errorMessage" class="alert alert-danger">
+      <strong>Error!</strong>  {{errorMessage}}
+  </div>
+</div>

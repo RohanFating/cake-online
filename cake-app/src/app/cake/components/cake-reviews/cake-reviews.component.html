@@ -1,3 +1,40 @@
-<p>
-  cake-reviews works!
-</p>
+<div [formGroup]="reviewsForm" class="row my-5 border rounded p-3">
+  <div class="col-md-4 mb-2">
+      <b>Cake Name</b>
+      <input placeholder="Enter cake name here" class="cake-details__comment col-md-12" formControlName="name"/>
+      <div class="text-danger" *ngIf="reviewsForm.invalid && reviewsForm.get('name').touched && reviewsForm.get('name').hasError('required')">
+        Please enter name for cacke
+      </div>
+      <div class="text-danger" *ngIf="reviewsForm.invalid && reviewsForm.get('name').touched && reviewsForm.get('name').hasError('minlength')">
+          Please enter more that 3 charecters
+      </div>
+    </div>
+  <div class="col-md-4 mb-2">
+      <b>Comments</b>
+    <input placeholder="Enter your comment here" class="cake-details__comment col-md-12" formControlName="comment"/>
+    <div class="text-danger" *ngIf="reviewsForm.invalid && reviewsForm.get('comment').touched && reviewsForm.get('comment').hasError('required')">
+      Please enter comment
+    </div>
+    <div class="text-danger" *ngIf="reviewsForm.invalid && reviewsForm.get('comment').touched && reviewsForm.get('comment').hasError('minlength')">
+        Please enter more that 3 charecters
+      </div>
+  </div>
+  <div class="col-md-4 mb-2">
+      <b>Yum Factor</b>
+    <select placeholder="yum factor" class="cake-details__comment col-md-12" formControlName="yumFactor">
+      <option *ngFor="let item of [1, 2, 3, 4, 5]">
+        {{item}}
+      </option>
+    </select>
+  </div>
+
+  <div *ngIf="errorMessage" class="col-12 text-danger">
+      {{errorMessage}}
+    </div>
+
+    <div class="col-12 my-3 cake-details__btn">
+        <button class="btn btn-primary" (click)="resetModels()">Reset</button>
+        <button class="btn btn-primary" (click)="submitReviews()">Submit</button>
+        <button class="btn btn-primary" (click)="goBack()">Go Back</button>
+   </div>
+</div>
